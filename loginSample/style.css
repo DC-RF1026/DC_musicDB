@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('images/background3.jpg') no-repeat;
+    background: url('images/background4.jpg') no-repeat;
     background-size: cover;
     background-position: center;
 }
@@ -102,7 +102,9 @@ contentは必要
     position: relative;
     width: 400px;
     height: 440px;
-    background: transparent;/*背景を透明にしてる*/
+    /* background: transparent; */
+    /*背景を透明にしてる*/
+    background-color: rgba(0, 0, 0, .5);
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     backdrop-filter: blur(20px);
@@ -252,7 +254,7 @@ contentは必要
     border-radius: 6px;
     cursor: pointer;
     font-size: 1em;
-    color: #;
+    color: #232836;
     font-weight: 500;
 }
 
