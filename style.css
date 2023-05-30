@@ -1,0 +1,207 @@
+@charset "UTF-8";
+
+html {
+  font-size: 100%;
+}
+body {
+ 
+  	color: #000;
+  	font-size: 0.875rem;
+    min-height: 100vh;
+    background: url('../images/background4.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+}
+a {
+  color: #000;
+  font-size: 0.875rem;
+  text-decoration: none;
+  display: inline-block;
+}
+img {
+  max-width: 100%;
+  vertical-align: bottom;
+}
+li {
+  list-style: none;
+}
+
+header {
+
+	display: flex;
+	justify-content: space-between;
+  	background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    /* margin: 5px; */
+    align-items: center;
+    overflow: hidden;
+	margin-bottom: 80px;
+	
+}
+/* ロゴ */
+header .logo  a{
+	padding: 0 20px;
+	font-size: 18px;
+	color: #fff;
+	letter-spacing: .2em;
+}
+/* メニュー */
+header ul {
+	padding: 0 30px;
+}
+header li {
+	display: inline-block;
+	padding: 0 6px;
+	font-size: 14px;
+	letter-spacing: .1em;
+}
+header li a {
+	color: #fff;
+}
+/* メニューのリンクホバーで線 */
+header li a:hover {
+	text-decoration: underline;
+}
+
+main{
+
+	max-width: 1032px;
+	margin: 0 auto;
+
+}
+
+/* ハートアイコンを赤くする */
+
+.fav{
+
+	content: "";
+	background-repeat: no-repeat;
+	background-image: url("../images/icon.png");
+	cursor: pointer;
+	
+}
+
+.icon {
+
+	cursor: pointer;
+
+}
+
+/* 削除ボタン */
+
+.button-area{
+
+	display: flex;
+
+}
+
+.button input {
+
+	background: red;
+	color: #fff;
+	border: none;
+	pading: 50px;
+	border-radius: 2px;
+	cursor: pointer;
+	margin: 10px;
+	
+}
+
+/* 編集ボタン */
+
+.edit {
+
+	border: none;
+	background-color: rgba(0, 0, 0, 0.8);
+  	background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    backdrop-filter: blur(20px);
+	color: #fff;
+	border-radius: 3px;
+	min-width: 120px;
+    height: 2.8em;
+    padding: 10px;
+	cursor: pointer;
+
+}
+
+/* セレクトボックス */
+
+.selectbox-area {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    margin-left: 20px;
+    margin-bottom: 40px;
+}
+
+.selectbox-area::after {
+    position: absolute;
+    right: 15px;
+    width: 10px;
+    height: 7px;
+    background-color: #535353;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    content: '';
+    pointer-events: none;
+}
+
+
+.selectbox-area select {
+    appearance: none;
+    min-width: 150px;
+    height: 2.8em;
+    padding: .4em calc(.8em + 30px) .4em .8em;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333333;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* 追加　テーブルの背景 */
+table {
+
+	width: 100%;
+	border-collapse: collapse;
+  	border-spacing: 0;
+  	border: none;
+
+}
+
+
+
+table th, table td {
+
+	width: 20%;
+	padding: 10px 0;
+	text-align: center;
+	color: #fff;
+	border:none;
+}
+
+/* 追加　テーブルの背景 */
+
+table tr {
+
+	
+    min-width: 250px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    /* margin: 5px; */
+    align-items: center;
+    overflow: hidden;
+    border-bottom: solid 1px #fff;
+}
+
+
+

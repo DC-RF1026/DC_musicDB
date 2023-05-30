@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Hello</title>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" href="../static/style.css">
+	<script src="../js/main.js"></script>
+</head>
+
+<body>
+	<header>
+	
+		<h1 class="logo"><a href="#">ロゴ</a></h1>
+	
+	<nav>
+		
+		<ul>
+            <li><a href="/home">お気に入り</a></li>
+            <li><a href="">曲を検索</a></li>
+            <li><a href="">ログアウト</a></li>
+          </ul>
+		
+		</nav>
+	
+	</header>
+	
+	<main>
+	
+		<div class="button-area">
+		
+			<form>
+				<input type="submit" value="編集" class="edit">
+			</form>
+			
+		<div class="selectbox-area">
+		
+			<select class="selectbox">
+				<option label="並び替え" value="sort">
+				<option label="名前順" value="name">
+			</select>
+			
+		</div>
+		
+		</div>
+	
+		<div>
+		
+		<table>
+		<tr>
+			<th class="num">No</th>
+			<th></th>
+			<th>タイトル</th>
+			<th>アルバム</th>
+			<th></th>
+
+		</tr>
+		<tr th:each="res : ${}"class="item">
+			<td class="num">1</td>
+			<td><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3j68ILEv8fyX4dIml9oX34?utm_source=generator&theme=0" width="100%" height="100px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></td>
+			<td>The Gate</td>
+			<td>album</td>
+			
+			<td class="button">
+
+				<form th:action="@{/del/{id}(id=${res.id})}">
+
+					<input type="submit" value="削除" />
+
+				</form>
+				<!-- 追加　ブックマークアイコン -->
+				<img src="../images/icon2.png" class="icon">
+			
+			</td>
+			
+			
+			
+		</tr>
+		<tr th:each="res : ${}"class="item">
+			<td class="num">2</td>
+			<td><iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3j68ILEv8fyX4dIml9oX34?utm_source=generator&theme=0" width="100%" height="100px" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe></td>
+			<td>The Gate</td>
+			<td>album</td>
+			
+			<td class="button">
+
+				<form th:action="@{/del/{id}(id=${res.id})}">
+
+					<input type="submit" value="削除" />
+
+				</form>
+				
+				<img src="../images/icon2.png" class="icon">
+				
+			</td>
+			
+			
+		</tr>
+	</table>
+		
+		</div>
+	
+	</main>
+
+</body>
+</html>   
