@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*
+    box-sizingはborderやpaddingで指定されている枠線や余白の大きさを要素の
+    幅・高さ(width・height)に含めるかどうか指定することができる
+    */
+    box-sizing: border-box;
+    font-family: 'MSP明朝', serif;
+}
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('background4.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+    /* 画面から見た位置で要素を固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    /* background-color: red; */
+    /*
+    flexbox: その直下の要素が並列になる
+    justify-content: flexアイテムの配置を指定している（今回は両端揃え）
+    align-items: flexアイテムを縦軸で見たときに上下のどこでそろえるか指定するプロパティ
+    z-index: 数字が大きいほうが上にくる
+    */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: #fff;
+    /* 選択できないようにする */
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 0.7em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/*
+::afterでaタグの中身の最後に疑似要素を追加
+contentは必要
+ */
+.navigation a::after {
+    content: '';/*空文字: インライン要素*/
+    position: absolute;
+    /* display: block; */
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation > .btnLogin_popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation >.btnLogin_popup:hover {
+    background-color: #fff;
+    color: #232836;
+}
+
+.search_container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+.search_container form {
+    /* background-color: #232836; */
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 26px;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.search_container input {
+    color: #232836;
+    flex: 1;
+    width: 400px;
+    border: none;
+    outline: none;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.search_container button {
+    margin-top: 6px;
+    margin-left: 6px;
+    color: #232836;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #fff;
+    border: none;
+    user-select: none;
+}
+
+.filter {
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    /* background-color: rgba(0, 0, 0, .5); */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
