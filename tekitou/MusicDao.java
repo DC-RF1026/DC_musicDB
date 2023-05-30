@@ -27,9 +27,10 @@ public class MusicDao {
 		List<EntMusic> resultDb2 = new ArrayList<EntMusic>();
 		for (Map<String, Object> result1 : resultDb1) {
 			EntMusic entmusicdb = new EntMusic();
-			//			entmusicdb.setId((int) result1.get("id"));
-			//			entmusicdb.setTitle((String) result1.get("title"));
-			//			entmusicdb.setContent((String) result1.get("content"));
+			entmusicdb.setId((int) result1.get("id"));
+			entmusicdb.setArtist((String) result1.get("artist"));
+			entmusicdb.setSong((String) result1.get("song"));
+			entmusicdb.setGenre((String) result1.get("genre"));
 
 			//移し替えたデータを持ったentmusicdbを、resultDB2に入れる
 			resultDb2.add(entmusicdb);
