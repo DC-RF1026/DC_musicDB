@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 public class EntMusic {
 	
+	private int id;
 	private String song;//曲名
 	private String genre;
 	private String artist;
@@ -18,6 +19,17 @@ public class EntMusic {
 	public EntMusic() {
 		
 	}
+
+	
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 
 	public String getSong() {
 		return song;
