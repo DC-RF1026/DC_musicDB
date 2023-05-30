@@ -1,8 +1,6 @@
 package com.example.demo.dao;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.entitiy.EntDaily;
 import com.example.demo.entity.EntMusic;
 
 @Repository
@@ -94,10 +91,12 @@ public class MusicDao {
 		//		データベースのデータを削除する処理
 		db.update("delete from music where id=?", id);
 	}
+	
+
 
 	// 昇順または降順でデータを取得する
-	public List<EntMusic> searchDbSortedBy＊ソート対象＊(boolean ascending){
-		String sql = "SELECT * FROM music ORDER BY ＊ソート対象＊ " + (ascending ? "ASC" : "DESC");
+	public List<EntMusic> searchDbSortedBySong(boolean ascending){
+		String sql = "SELECT * FROM music ORDER BY song " + (ascending ? "ASC" : "DESC");
 
 		List<Map<String, Object>> resultDb1 = db.queryForList(sql);
 		List<EntMusic> resultDb2 = new ArrayList<>();
