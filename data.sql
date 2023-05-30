@@ -1,5 +1,5 @@
 INSERT INTO music
-(song, artist, acositicness, danceability, energy, instrumentalness, liveness, tempo, link, genre, id)
+(song, artist, genre, id)
 VALUES
 ('The 1st chapter', 'Uniolla', , '32rhuRkjXzumTIGN5ENqsK'),
 ('246', 'Straightener', , '1dfVdOypzMENs6qfO6PAz2'),
