@@ -1,4 +1,4 @@
-INSERT INTO
+INSERT INTO music
 (song, artist, acositicness, danceability, energy, instrumentalness, liveness, tempo, link, genre)
 VALUES
 ('透明少女', 'ナンバーガール',0.089, 0.877, 3.16, 0.897, 0.151, 181.798, 'https://open.spotify.com/track/6b5DOkHnZZOnJnhaWXjifT', "Rock"),
