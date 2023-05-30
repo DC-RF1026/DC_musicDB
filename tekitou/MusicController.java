@@ -64,7 +64,12 @@ public class MusicController {
 
 	//編集画面
 	@RequestMapping("edit")
-	public String edit(Model model) {
+	public String edit(Model model, Music music) {
+		
+		List<EntMusic> list;
+		list = musicdao.searchDb();
+		
+		model.addAttribute("dbList", list);
 
 		return "form/edit";
 	}
