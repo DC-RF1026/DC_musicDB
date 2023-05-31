@@ -30,7 +30,7 @@ public class MusicDao {
 			entmusicdb.setId((int) result1.get("id"));
 			entmusicdb.setArtist((String) result1.get("artist"));
 			entmusicdb.setSong((String) result1.get("song"));
-			entmusicdb.setUrl((String) result1.get("url"));
+			entmusicdb.setUri((String) result1.get("uri"));
 
 			
 
@@ -50,9 +50,7 @@ public class MusicDao {
 
 		for (Map<String, Object> result1 : resultDb1) {
 			EntMusic entmusicdb = new EntMusic();
-			entmusicdb.setSong((String) result1.get("song"));
-			entmusicdb.setArtist((String) result1.get("artist"));
-			entmusicdb.setUrl((String) result1.get("url"));
+			entmusicdb.setUri((String) result1.get("uri"));
 
 			resultDb2.add(entmusicdb);
 		}
@@ -67,9 +65,8 @@ public class MusicDao {
 
 		for (Map<String, Object> result1 : resultDb1) {
 			EntMusic entmusicdb = new EntMusic();
-			entmusicdb.setSong((String) result1.get("song"));
-			entmusicdb.setArtist((String) result1.get("artist"));
-			entmusicdb.setUrl((String) result1.get("url"));
+
+			entmusicdb.setUri((String) result1.get("uri"));
 
 			resultDb2.add(entmusicdb);
 		}
@@ -92,8 +89,8 @@ public class MusicDao {
 	
 	//新規データ挿入(INSERT)
 	public void insertDb(EntMusic entmusic) {
-	    db.update("INSERT INTO music (song, artist, genre, url) VALUES (?, ?, ?, ?)",
-	              entmusic.getSong(), entmusic.getArtist(), entmusic.getGenre(), entmusic.getUrl());
+	    db.update("INSERT INTO music (song, artist, genre, uri) VALUES (?, ?, ?, ?)",
+	              entmusic.getSong(), entmusic.getArtist(), entmusic.getGenre(), entmusic.getUri());
 	}
 
 
@@ -109,7 +106,7 @@ public class MusicDao {
 			entmusicdb.setId((int) result1.get("id"));
 			entmusicdb.setArtist((String) result1.get("artist"));
 			entmusicdb.setSong((String) result1.get("song"));
-			entmusicdb.setUrl((String) result1.get("url"));
+			entmusicdb.setUri((String) result1.get("uri"));
 			resultDb2.add(entmusicdb);
 		}
 
