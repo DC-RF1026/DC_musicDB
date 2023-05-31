@@ -299,7 +299,7 @@ header {
     color: #fff;
     text-decoration: none;
     font-weight: 500;
-    margin-left: 40px;
+    margin-right: 40px;
 }
 
 /*
@@ -337,7 +337,7 @@ contentは必要
     font-size: 0.7em;
     color: #fff;
     font-weight: 500;
-    margin-left: 40px;
+    margin-right: 40px;
     transition: .5s;
 }
 
