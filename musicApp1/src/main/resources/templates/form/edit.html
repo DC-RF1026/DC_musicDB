@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" th:href="@{/edit.css}">
+	<title>編集ページ</title>
+</head>
+
+<body>
+	<header class="logo">
+		<h2 class="header_logo">My<span class="fontM">M</span>u</h2>
+		<form th:action="@{/logout}">
+			<nav class="navigation">
+				<a href="/home">Home</a>
+				<a href="#" class="add_box">曲を追加</a>
+				<a href="/edit">編集</a>
+				<a href="/favorite">お気に入り</a>
+				<a href="/search">曲を検索</a>
+				<button class="btnLogin_popup">Logout</button>
+			</nav>
+		</form>
+	</header>
+	<div class="insert_box_parent">
+		<div class="insert_box">
+			<form action="#" class="content_container3" th:action="@{/insert}">
+				<input class="content_singer" type="text" name="artist" placeholder="singer" required>
+				<input class="content_title" type="text" name="song" placeholder="title" required>
+				<input class="content_genre" type="text" name="genre" placeholder="genre" required>
+				<input class="content_uri" type="text" name="uri" placeholder="url" required>
+				<button class="edit_btn" type="submit">追加</button>
+			</form>
+		</div>
+	</div>
+
+	<main>
+
+		<table>
+			<tr class="content_container" th:classappend="name + ${res.id}" th:each="res : ${dbList}">
+				<td class="content artist" th:text="${res.artist}"></td>
+				<td class="content song" th:text="${res.song}"></td>
+			</tr>
+		</table>
+		<div class="form_container">
+			<form action="#" th:action="@{/update}" class="content_container2" th:classappend="id + ${res.id}"
+				th:each="res : ${dbList}">
+				<input type="hidden" name="id" th:value="${res.id}">
+				<input class="content_artist" name="artist" type="text" th:value="${res.artist}">
+				<input class="content_song" name="song" type="text" th:value="${res.song}">
+				<button type="submit">完了</button>
+			</form>
+		</div>
+	</main>
+
+	<script th:src="@{/edit.js}"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

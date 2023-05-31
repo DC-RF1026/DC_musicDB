@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="/search.css">
+	<title>検索ページ</title>
+</head>
+
+<body>
+	<div class="filter">
+		<header class="logo">
+			<h2>ヘッダー（仮）</h2>
+			<nav class="navigation">
+				<a href="/home">Home</a>
+				<a href="/edit">編集</a>
+				<a href="/favorite">お気に入り</a>
+				<a href="/search">曲を検索</a>
+				<button class="btnLogin_popup">Logout</button>
+			</nav>
+		</header>
+		<div class="search_container">
+			<form action="/search/artist" method="GET">
+				<input type="text" name="artist" placeholder="アーティスト検索">
+				<button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+			</form>
+			<form action="/search/song" method="GET">
+				<input type="text" name="song" placeholder="曲名検索">
+				<button type="submit"><ion-icon name="search-outline"></ion-icon></button>
+			</form>
+		</div>
+
+		<div>
+			<table>
+				<tr>
+					<th>アーティスト名</th>
+					<th>曲名</th>
+				</tr>
+				<tr th:each="music : ${dbList}">
+					<td th:text="${music.artist}">アーティスト名</td>
+					<td th:text="${music.song}">曲名</td>
+				</tr>
+
+			</table>
+		</div>
+	</div>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,426 @@
+/* @font-face {
+    font-family: 'pop';
+    src: url('../fonts/M_PLUS_Rounded_1c/MPLUSRounded1c-Black.ttf') format('truetype');
+} */
+
+@font-face {
+    font-family: 'pop';
+    src: url('../fonts/Noto_Sans_JP/NotoSansJP-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: mymu;
+    src: url('../fonts/rastano14/Rastano.ttf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    /*
+    box-sizingはborderやpaddingで指定されている枠線や余白の大きさを要素の
+    幅・高さ(width・height)に含めるかどうか指定することができる
+    */
+    box-sizing: border-box;
+    font-family: 'pop', serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    background: url('../images/background4.jpg') no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    gap: 10px;
+}
+
+header {
+    /* 画面から見た位置で要素を固定 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: rgba(0, 0, 0, 1);
+    /*
+    flexbox: その直下の要素が並列になる
+    justify-content: flexアイテムの配置を指定している（今回は両端揃え）
+    align-items: flexアイテムを縦軸で見たときに上下のどこでそろえるか指定するプロパティ
+    z-index: 数字が大きいほうが上にくる
+    */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+
+.logo {
+    font-size: 2em;
+    color: #fff;
+    /* 選択できないようにする */
+    user-select: none;
+}
+
+.navigation a {
+    position: relative;
+    font-size: 0.7em;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;
+}
+
+/*
+::afterでaタグの中身の最後に疑似要素を追加
+contentは必要
+ */
+.navigation a::after {
+    content: '';/*空文字: インライン要素*/
+    position: absolute;
+    /* display: block; */
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s;
+}
+
+.navigation a:hover::after {
+    transform-origin: left;
+    transform: scaleX(1);
+}
+
+.navigation > .btnLogin_popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.7em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.navigation >.btnLogin_popup:hover {
+    background-color: #fff;
+    color: #232836;
+}
+
+.filter {
+    width: 100%;
+    height: 100vh;
+    background: transparent;
+    /* background-color: rgba(0, 0, 0, .5); */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search_container {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search_container form {
+    /* background-color: #232836; */
+    height: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.search_container input {
+    color: #232836;
+    flex: 1;
+    width: 400px;
+    border: none;
+    outline: none;
+    padding: 0 20px;
+    font-size: 18px;
+}
+
+.search_container button {
+    color: #232836;
+    font-size: 20px;
+    font-weight: 500;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.content_container {
+    /* scale: 0; */
+    width: 250px;
+    min-width: 250px;
+    height: 250px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    border: 2px solid rgba(0, 0, 0, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    /* margin: 5px; */
+    border-radius: 15px;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    overflow: hidden;
+    transform: scale(1);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.add_box.add_btn {
+        /* scale: 0; */
+        width: 250px;
+        min-width: 250px;
+        height: 250px;
+        padding: 20px;
+        background-color: rgba(255, 255, 255, 0);
+        /* background: transparent; */
+        /* 背景を透明にしてる */
+        border: 2px solid rgba(0, 0, 0, 0);
+        /* backdrop-filter: blur(20px); */
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0);
+        display: flex;
+        flex-flow: column;
+        justify-content: space-around;
+        /* margin: 5px; */
+        border-radius: 5px;
+        align-items: center;
+        cursor: pointer;
+        z-index: 1;
+        overflow: hidden;
+        transform: scale(1);
+        transition: transform .2s ease, height .2s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.add_box:hover {
+    transform: scale(1.1);
+}
+
+.add_content {
+    width: 100px;
+    height: 100px;
+    background-color: rgba(20, 20, 20, .8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+
+}
+
+.add_mark {
+    text-align: center;
+    color: #a85ba1;
+    font-size: 70px;
+}
+
+
+.content_container:hover {
+    transition: transform, .21s ease-out;
+    transform: scale(1.05);
+    z-index: 98;
+}
+.content_container.not_active {
+    transform: scale(0);
+}
+
+
+.content {
+    color: #fff;
+    user-select: none;
+}
+.content.title {
+    color: #fff;
+    font-size: 2em;
+    /* user-select: none; */
+}
+
+tbody {
+    position: absolute;
+    top: 500;
+    /* left: 0; */
+    left: 55px;
+    width: 1810px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    /* padding-top: 130px; */
+    gap: 10px;
+    /* background-color: red; */
+}
+
+.form_container {
+    /* scale: 0; */
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 55px;
+    width: 1810px;
+    height: auto;
+    display: flex;
+    /* flex-direction: row-reverse; */
+    flex-wrap: wrap;
+    justify-content: start;
+    /* padding-top: 130px; */
+    gap: 10px;
+}
+
+
+.content_container2 {
+    /* scale: 0; */
+    width: 250px;
+    min-width: 250px;
+    height: 250px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    border: 2px solid rgba(0, 0, 0, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    /* margin: 5px; */
+    border-radius: 15px;
+    align-items: center;
+    /* cursor: pointer; */
+    z-index: 1;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.content_container2.active {
+    transform: scale(1.05);
+    z-index: 2;
+}
+
+.content_container3 {
+    /* scale: 0; */
+    width: 500px;
+    min-width: 250px;
+    height: 250px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* background: transparent; */
+    /* 背景を透明にしてる */
+    border: 2px solid rgba(0, 0, 0, .5);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    /* margin: 5px; */
+    border-radius: 0 0 15px 15px;
+    align-items: center;
+    /* cursor: pointer; */
+    z-index: 0;
+    overflow: hidden;
+    /* transform: scale(0); */
+    transform: translateY(-50%) scale(0) translateX(60%);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.content_container3.active {
+    transform: translateY(0) scale(1) translateX(60%);
+    z-index: 100;
+    /* transform: scale(1); */
+}
+
+
+.insert_box {
+    /* scale: 0; */
+    width: 0;
+    height: 0;
+    position: relative;
+    z-index: 0;
+}
+
+form input {
+    background-color: rgb(255, 255, 255);
+    padding: 3px;
+    color: #333;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    height: 35px;
+    font-weight: 600;
+    margin-left: 0;
+}
+
+.edit_btn {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    height: 35px;
+    font-size: 18px;
+    color: #333;
+    font-weight: 600;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.content_container3 input {
+    width: 400px;
+}
+
+.content_container3 button {
+    width: 200px;
+}
+
+.fontM {
+    font-size: 60px;
+    color: rgba(166, 58, 155, 0.837);
+    font-family: 'mymu';
+}
+
+.header_logo {
+    font-family: 'mymu';
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-top: 136px;
+    /* background-color: #a85ba1; */
+}
+
+.insert_box_parent {
+    width: 500px;
+    padding-top: 125px;
+    position: fixed;
+    z-index: 50;
+}
+

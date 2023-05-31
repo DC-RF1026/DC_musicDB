@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Website With Login & Registration</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+	<header class="logo">
+		<h2>MY MUSIC</h2>
+		<nav class="navigation">
+			<!-- <a href="#">Demo</a>
+            <a href="#">Demo</a>
+            <a href="#">Demo</a>
+            <a href="#">Demo</a> -->
+			<a href="/home">Home</a>
+			<button class="btnLogin_popup">Login</button>
+		</nav>
+	</header>
+
+	<div class="wrapper">
+		<span class="icon_close">
+			<ion-icon name="close"></ion-icon>
+		</span>
+		<div class="form_box login">
+			<h2>ログイン</h2>
+			<form action="#">
+				<div class="input_box">
+					<!-- <span class="icon"><ion-icon name="mail-outline"></ion-icon></span> -->
+					<span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+					<input type="text" required>
+					<label>ユーザーネーム</label>
+				</div>
+				<div class="input_box">
+					<span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+					<input type="password" required>
+					<label>パスワード</label>
+				</div>
+				<div class="remember_forgot">
+					<label>
+						<input type="checkbox">
+						ログイン状態を保持
+					</label>
+					<a href="#">パスワードを忘れた</a>
+				</div>
+				<button type="submit" class="btn">ログイン</button>
+				<div class="login_register">
+					<p>
+						アカウントをお持ちですか？
+						<a href="#" class="register_link">新規登録</a>
+					</p>
+				</div>
+			</form>
+		</div>
+		<div class="form_box register">
+			<h2>新規登録</h2>
+			<form action="#">
+				<div class="input_box">
+					<span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+					<input type="text" required>
+					<label>ユーザーネーム</label>
+				</div>
+				<!-- <div class="input_box">
+                    <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                    <input type="email" required>
+                    <label>Email</label>
+                </div> -->
+				<div class="input_box">
+					<span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+					<input type="password" required>
+					<label>パスワード</label>
+				</div>
+				<div class="input_box">
+					<span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+					<input type="password" required>
+					<label>パスワード(確認用)</label>
+				</div>
+				<div class="remember_forgot">
+					<label>
+						<input type="checkbox">
+						契約に同意します
+					</label>
+				</div>
+				<button type="submit" class="btn">登録</button>
+				<div class="login_register">
+					<p>
+						すでにアカウントをお持ちの方
+						<a href="#" class="login_link">ログイン</a>
+					</p>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script th:src="@{/script.js}"></script>
+	<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
