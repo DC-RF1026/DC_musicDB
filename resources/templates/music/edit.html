@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{css/edit.css}">
+    <title>編集ページ</title>
+</head>
+<body>
+    <!-- <div class="filter"> -->
+        <header class="logo">
+            <h2 class="header_logo">My<span class="fontM">M</span>u</h2>
+            <nav class="navigation">
+                <a href="#" class="add_box">曲を追加</a>
+                <a href="#">Home</a>
+                <a href="#">お気に入り</a>
+                <a href="#">曲を検索</a>
+                <a href="#">編集</a>
+                <button class="btnLogin_popup">ログアウト</button>
+            </nav>
+        </header>
+        <div class="insert_box_parent">
+            <!-- <div class="add_box add_btn">
+                <div class="add_content">
+                    <ion-icon class="add_mark" name="add-outline"></ion-icon>
+                </div>
+            </div> -->
+            <div class="insert_box">
+                <form action="#" class="content_container3" th:action="@{/insert}">
+                    <input class="content_singer" type="text" name="singer" placeholder="singer" required>
+                    <input class="content_title" type="text" name="title" placeholder="title" required>
+                    <input class="content_genre" type="text" name="genre" placeholder="genre" required>
+                    <input class="content_uri" type="text" name="uri" placeholder="url" required>
+                    <button  class="edit_btn" type="submit">追加</button>
+                </form>
+            </div>
+        </div>
+
+        <main>
+            <table>
+                <tr class="content_container" th:classappend="name + ${res.id}" th:each="res : ${dbList}">
+                    <td class="content singer" th:text="${res.singer}"></td>
+                    <td class="content title" th:text="${res.title}"></td>
+                    <td class="content title" th:text="${res.genre}"></td>
+                </tr>
+            </table>
+            <div class="form_container">
+                <form action="#" class="content_container2" th:classappend="id + ${res.id}" th:each="res : ${dbList}" th:action="@{/update}">
+                    <input type="hidden" name="id" th:value="${res.id}">
+                    <input class="content_singer" type="text" name="singer" th:value="${res.singer}" required>
+                    <input class="content_title" type="text" name="title" th:value="${res.title}" required>
+                    <input class="content_genre" type="text" name="genre" th:value="${res.genre}" required>
+                    <button  class="edit_btn" type="submit">完了</button>
+                </form>
+            </div>
+        </main>
+    <!-- </div> -->
+    <script th:src="@{js/edit.js}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
