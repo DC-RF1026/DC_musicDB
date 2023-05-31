@@ -103,7 +103,7 @@ public class MusicController {
 		entmusic.setArtist(music.getArtist());
 		entmusic.setSong(music.getSong());
 		entmusic.setGenre(music.getGenre());
-		entmusic.setUrl(music.getUrl());
+		entmusic.setUri(music.getUri());
 
 		musicdao.insertDb(entmusic);
 
@@ -112,9 +112,23 @@ public class MusicController {
 
 	//物理削除(DELETE)　　＊論理削除じゃない＊
 	@RequestMapping("/del/{id}")
-	public String delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id,Model model, Music music, @RequestParam(value = "sort", required = false) String sort) {
 		musicdao.deleteDb(id);
-		return "redirect:/index";
+		List<EntMusic> list;
+
+		if (sort != null && sort.equals("low")) {
+			// 低い順にソートして取得,dailydaoのsearchDbSortedByDateメソッドの引数にtrueを渡す。
+			list = musicdao.searchDbSortedBySong(true);
+		} else if (sort != null && sort.equals("high")) {
+			// 高い順にソートして取得
+			list = musicdao.searchDbSortedBySong(false);
+		} else {
+			// 通常の取得、ソートボタン押してない時に表示させるもの
+			list = musicdao.searchDb();
+		}
+
+		model.addAttribute("dbList", list);
+		return "index";
 	}
 
 	//検索画面
